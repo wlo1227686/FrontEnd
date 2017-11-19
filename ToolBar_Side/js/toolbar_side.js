@@ -27,7 +27,6 @@ function toolbar_Logic() {
         alert("visibility");
     });
     document.getElementById('pin').addEventListener('click', function () {
-        alert("pin");
         if (document.getElementById("status_pin").checked) {
             document.getElementById("status_pin").checked = false;
             document.getElementById("pin").style.backgroundColor = "#555555";
