@@ -20,10 +20,35 @@ function toolbar_Logic() {
     document.getElementById('cloud').addEventListener('click', function () {
         alert("cloud");
     });
+    document.getElementById('calendar').addEventListener('click', function () {
+        alert("calendar");
+    });
+    document.getElementById('visibility').addEventListener('click', function () {
+        alert("visibility");
+    });
+    document.getElementById('pin').addEventListener('click', function () {
+        alert("pin");
+        if (document.getElementById("status_pin").checked) {
+            document.getElementById("status_pin").checked = false;
+            document.getElementById("pin").style.backgroundColor = "#555555";
+        } else {
+            document.getElementById("status_pin").checked = true;
+            document.getElementById("pin").style.backgroundColor = "#000000";
+        }
+    });
+    document.getElementById('underline').addEventListener('click', function () {
+        alert("underline");
+    });
+    document.getElementById('search').addEventListener('click', function () {
+        alert("search");
+    });
 }
 function openNav() {
     document.getElementById("mySidenav").style.width = "80px";
 }
 function closeNav() {
-    document.getElementById("mySidenav").style.width = "0px";
+    if (document.getElementById("status_pin").checked) {
+    } else {
+        document.getElementById("mySidenav").style.width = "0px";
+    }
 }
