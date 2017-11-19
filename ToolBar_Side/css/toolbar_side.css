@@ -1,0 +1,31 @@
+.sidenav {
+    height: auto;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.icon-bar {
+    width: 70px;
+    background-color: #555;
+}
+
+.icon-bar div {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.icon-bar div:hover {
+    background-color: #000;
+}
+
+#setting {
+    background-color: #4CAF50 !important;
+}
