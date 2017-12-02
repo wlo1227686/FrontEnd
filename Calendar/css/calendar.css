@@ -1,0 +1,33 @@
+
+.parent {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    Float:left;
+}
+.calendar_botton{
+    width:20px;
+    height:20px;
+    text-align:center;
+    border-radius: 12.99px;
+    background:#ccc;
+    letter-spacing:-3px;
+}
+.calendar_botton:hover{
+    background:#aaa;
+}
+#mySide {
+    width: 250px;
+    height: 180px;
+    position: fixed;
+    background-color: white;
+    transition: 0.5s;
+    border: 1px solid red;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+.child_7 {
+    width: 16px;
+}
