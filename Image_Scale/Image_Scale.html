@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
+    <title>img_scale_css</title>
+</head>
+<style>
+    .pageitem1 {
+        width: 250px;
+        height: 430px;
+        z-index: -1;
+        margin: 0 0 .5em;
+        overflow: hidden;
+        border-radius: 10px;
+        background: #FEFDCA;
+        padding: 0px 5px 0px 5px;
+    }
+
+    .pageitem1:hover img {
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+        transition: 0.1s;
+    }
+</style>
+
+<body>
+    <div id="page1">
+    </div>
+    <div id="page2">
+        <div id="show_font" style="margin-top:20px;" align="center">
+            <div style="padding:20px;font-size:50px;Display:inline-block;">
+                img_scale_css
+            </div>
+
+            <div>
+                <div style="Display:inline-block;">
+                    <div>
+                        <div class="pageitem1">
+                            <img src="img/pic01.jpg" height="390px" width="260px" style="margin:20px 0px 0px -5px;">
+                        </div>
+                    </div>
+                    <div style="font-size:20px;">pic01</div>
+                </div>
+                <div style="Display:inline-block;">
+                    <div>
+                        <div class="pageitem1">
+                            <img src="img/pic02.jpg" height="390px" width="260px" style="margin:20px 0px 0px -5px;">
+                        </div>
+                    </div>
+                    <div style="font-size:20px;">pic02</div>
+                </div>
+                <div style="Display:inline-block;">
+                    <div>
+                        <div class="pageitem1">
+                            <img src="img/pic03.jpg" height="390px" width="260px" style="margin:20px 0px 0px -5px;">
+                        </div>
+                    </div>
+                    <div style="font-size:20px;">pic03</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
