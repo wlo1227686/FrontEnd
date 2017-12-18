@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .item {
+        padding: 10px;
+        width: 150px;
+        height: 20px;
+        font-size: 20px;
+        border-radius: 4px;
+        border: 1px solid #28a745;
+        color: #28a745;
+        background-color: transparent;
+        border-color: #28a745;
+    }
+
+    .item:hover {
+        color: #fff;
+        background-color: #28a745;
+        border-color: #28a745;
+        opacity: 0.5;
+    }
+
+    #model {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+        transition: opacity .3s linear;
+        background-color: #000;
+    }
+
+    #alert_font {
+        position: fixed;
+        left: 50%;
+        width: 598px;
+        height: 500px;
+        border-radius: 15px;
+        margin: 0px 0px 0px -300px;
+        z-index: 100;
+        background: #fff;
+        transition: .3s;
+        border: 1px solid rgba(0, 0, 0, .2);
+    }
+
+    .alert_item {
+        padding: 10px;
+        width: 250px;
+        font-size: 20px;
+        border-radius: 4px;
+        border: 1px solid #007bff;
+        color: #007bff;
+        background-color: transparent;
+        border-color: #007bff;
+        z-index: 110;
+    }
+
+    .alert_head {
+        Margin-bottom: 10px;
+        width: 550px;
+        height: 98%;
+        font-size: 20px;
+        line-height: 30px;
+        border-radius: 4px;
+        border: 1px solid #007bff;
+        color: #007bff;
+        background-color: transparent;
+        border-color: #007bff;
+        z-index: 110;
+    }
+
+    .alert_item:hover {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+        opacity: 0.5;
+    }
+
+    .alert_show {
+        top: 15%;
+    }
+
+    .alert_hidden {
+        top: -100%;
+    }
+
+    .model_show {
+        opacity: 0.5;
+        display: block;
+    }
+
+    .model_hidden {
+        opacity: 0;
+        display: none;
+    }
+</style>
+
+<body>
+    <div id="btn1" style="Display:inline-block;" class="item" align="center">SHOW ALERT</div>
+    <!-- alert_windows -->
+    <div id="alert_font" style="top:15%;">
+
+        <div style="padding:10px;" align="center">
+            <div>
+                <div id="btn2" class="alert_item" style="Display:inline-block;">
+                    <div>關閉</div>
+                </div>
+                <div id="btn3" class="alert_item" style="Display:inline-block;">
+                    <div>確定</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="model" class="model_show"></div>
+</body>
+<script>
+    document.getElementById('btn1').addEventListener('click', function () {
+        document.getElementById('model').className = "model_show";
+        document.getElementById('alert_font').style.top = '15%';
+    });
+    document.getElementById('btn2').addEventListener('click', function () {
+        document.getElementById('model').className = "model_hidden";
+        document.getElementById('alert_font').style.top = '-200%';
+    });
+</script>
+
+</html>
