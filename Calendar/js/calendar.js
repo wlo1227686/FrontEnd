@@ -1,83 +1,52 @@
-window.onresize = function (event) {
-    var b_x = document.body.clientWidth;
-    var b_y = document.body.clientHeight;
-    // console.log("b_x=" + b_x + "    b_y=" + b_y);
-    $('.parent input').click(function () {
-        var my_Date = document.getElementById(this.id);
-        // console.log(this.id.toString() + "=" + document.getElementById(this.id));
-        var x = document.getElementById(this.id).offsetLeft;
-        var y = document.getElementById(this.id).offsetTop;
-        // console.log("x=" + x + " y=" + y);
-        openCalendar(this.id, b_x, b_y, x, y);
-    });
+var now_Date =
+    (new Date().getFullYear() - 1911).toString() +
+    (new Date().getMonth() + 1 < 10
+        ? "0" + (new Date().getMonth() + 1)
+        : new Date().getMonth() + 1
+    ).toString() +
+    (new Date().getDate() < 10
+        ? "0" + new Date().getDate()
+        : new Date().getDate()
+    ).toString();
+var Session_DATE = now_Date;
+window.onload = function (input) {
+    Load_Main();
 };
-window.onload = function () {
-
+//------<Function>---------------------------------------------------------------------------------------
+function Load_Main() {
+    document.getElementById('query_date').value = Session_DATE;
+    //日期的點擊事件
+    document.getElementById('query_date').addEventListener('click', function () {
+        alert_Message_Calendar();
+    });
 }
-function openCalendar(input, input_b_x, input_b_y, input_o_x, input_o_y) {
-    // document.getElementById('show_mySide').value = "off";
-    document.getElementById("mySide").style.width = "250px";
-    document.getElementById("mySide").style.height = "180px";
-    document.getElementById("mySide").style.borderWidth = "1px";
-    document.getElementById("mySide").style.padding = "10px";
-    document.getElementById("mySide").style.top = (input_o_y) + 25 + "px";
-    if (input_b_x - input_o_x < 400) {
-        document.getElementById("mySide").style.left = (input_o_x) - 100 + 50 + "px";
-    }
-    else {
-        document.getElementById("mySide").style.left = (input_o_x) + 50 + "px";
-    }
-    show_calendar(input);
-
-}
-function closeCalendar() {
-    // document.getElementById('show_mySide').value = "on";
-    document.getElementById("mySide").style.width = "0px";
-    document.getElementById("mySide").style.height = "0px";
-    document.getElementById("mySide").style.borderWidth = "0px";
-    document.getElementById("mySide").style.display = "block";
-    document.getElementById("mySide").style.padding = "0px";
+//[alert_Message_Calendar]日期的ALERT---------------------------------------------------------------------------------------------------------
+function alert_Message_Calendar() {
+    document.getElementById('model').className = "model_show";
+    resultData = "";
+    resultData += "<div style='height:50px;'><div style='padding:10px;' align='center'><div id='OLD_Y' style='Display:inline-block; letter-spacing: -5px;font-weight: bold;' class='btn_s_Calendar_tool'>&lt;&lt;</div><div id='OLD_M' style='Display:inline-block; letter-spacing: 0px;font-weight: bold;' class='btn_s_Calendar_tool'>&lt;</div><div style='Display:inline-block;font-size:24px;font-family:微軟正黑體;'>民國:</div><div style='Display:inline-block;Margin:0px 2px 0px 2px;'><input type='text' id='SHOW_Y' value='107' style='width:50px;color:blue;border-width: 0px 0px 1px 0px;border-color:black;text-align:center;font-size:24px;' readonly></div><div style='Display:inline-block;font-size:24px;font-family:微軟正黑體;'>年</div><div style='Display:inline-block;Margin:0px 2px 0px 2px;'><input type='text' id='SHOW_M' value='12' style='width:50px;color:blue;border-width: 0px 0px 1px 0px;border-color:black;text-align:center;font-size:24px;' readonly></div><div style='Display:inline-block;font-size:24px;font-family:微軟正黑體;'>月</div><div style='Display:inline-block;Margin:0px 2px 0px 2px;'><input type='text' id='SHOW_D' value='31' style='width:50px;color:blue;border-width: 0px 0px 1px 0px;border-color:black;text-align:center;font-size:24px;' readonly></div><div style='Display:inline-block;font-size:24px;font-family:微軟正黑體;'>日</div><div id='NEW_M' style='Display:inline-block;letter-spacing:0px;font-weight:bold;' class='btn_s_Calendar_tool'>&gt;</div><div id='NEW_Y' style='Display:inline-block;letter-spacing:-5px;font-weight:bold;' class='btn_s_Calendar_tool'>&gt;&gt;</div> </div></div><div style='height:389px;'><div style='padding:5px;font-size:30px;font-family:微軟正黑體;' align='center'><div id='daily_Row'></div></div></div><div style='height:60px;'><div style='padding:5px;' align='center'><div id='btn_s_a' style='Display:inline-block;' class='item' align='center'></div><div style='Display:inline-block;width:50px;'></div><div id='btn_s_c' style='Display:inline-block;' class='item' align='center'></div></div></div>";
+    document.getElementById('ALERT_M').innerHTML = resultData;
+    show_calendar(document.getElementById('query_date').value);
+    logic_calendar();
+    document.getElementById('ALERT_M').style.top = '15%';
+    document.getElementById('btn_s_a').innerHTML = "確定";
+    document.getElementById('btn_s_c').innerHTML = "取消";
+    LOGIC_alert_Message_Calendar();
 }
 function show_calendar(input) {
-    var key = document.getElementById("mySide_key").value;
-    if (key == "") {
-        do_createDaily(input, new Date().getFullYear(), new Date().getMonth(), new Date().getDay(1));
-        document.getElementById("mySide_key").value = (new Date().getFullYear() - 1911).toString() + (new Date().getMonth() + 1 <= 9 ? "0" + new Date().getMonth() + 1 : new Date().getMonth() + 1).toString() + (new Date().getDate() <= 9 ? "0" + new Date().getDate() : new Date().getDate()).toString();
-    } else {
-        do_createDaily(input, (parseInt(key.substr(0, 3)) + parseInt("1911")), parseInt(key.substr(3, 2)) - 1, key.substr(5, 2));
-    }
+    var key = input;
+    CREATE_CALENDAR(input, (parseInt(key.substr(0, 3)) + parseInt("1911")), parseInt(key.substr(3, 2)) - 1, key.substr(5, 2));
 }
-
-function do_createDaily(input, input_Y, input_M, input_D) {
+function CREATE_CALENDAR(input, input_Y, input_M, input_D) {
     var ans_id = input;
-    // console.log('ans_id=' + ans_id);
-    var String_For_Daily_Tools = "";
-    String_For_Daily_Tools += "<div style='padding:0px 0px 5px 5px;'align='center'>";
-    String_For_Daily_Tools += "<div style='Display:inline-block;'>";
-    String_For_Daily_Tools += "<div id='OLD_Y'style='Display:inline-block;padding:5px 5px 0px 0px;' class='calendar_botton'>&lt;&lt;</div>&nbsp;";
-    String_For_Daily_Tools += "<div id='OLD_M'style='Display:inline-block;padding:5px 5px 0px 0px;' class='calendar_botton'>&lt;</div>";
-    String_For_Daily_Tools += "</div>";
-    String_For_Daily_Tools += "<div style='Display:inline-block;'>";
-    String_For_Daily_Tools += "<div style='Display:inline-block;'>民國:</div><div style='Display:inline-block;'><input type='text' id='show_Y' style='width:40px;color:blue;border-width: 0px 0px 1px 0px;border-color:black;text-align:center;' readonly></div>";
-    String_For_Daily_Tools += "<div style='Display:inline-block;'>月:</div><div style='Display:inline-block;padding:0px 5px 0px 0px;'><input type='text' id='show_M' style='width:30px;color:blue;border-width: 0px 0px 1px 0px;border-color:black;text-align:center;' readonly></div>";
-    String_For_Daily_Tools += "</div>";
-    String_For_Daily_Tools += "<div style='Display:inline-block;'></div>";
-    String_For_Daily_Tools += "<div style='Display:inline-block;'>";
-    String_For_Daily_Tools += "<div id='NEW_M'style='Display:inline-block;padding:5px 3px 0px 2px;' class='calendar_botton'>&gt;</div>&nbsp;";
-    String_For_Daily_Tools += "<div id='NEW_Y'style='Display:inline-block;padding:5px 3px 0px 2px;' class='calendar_botton'>&gt;&gt;</div>";
-    String_For_Daily_Tools += "</div></div>";
-    document.getElementById('daily_Tools').innerHTML = String_For_Daily_Tools;
     var date = new Date(input_Y, input_M, "1");
     var CreateYear = date.getFullYear();//年
     var CreateMonth = date.getMonth();//月0~11
     var CreateDay = date.getDay(1);//該月第一天的星期  
     /*************************************************************************************** */
-    try {
-        document.getElementById("show_Y").value = (CreateYear - 1911).toString();
-        document.getElementById("show_M").value = (CreateMonth + 1 < 10 ? "0" + (CreateMonth + 1) : CreateMonth + 1).toString();
-    } catch (e) {
-        console.log("[Error Code]:" + e);
-    }
+    document.getElementById('SHOW_Y').value = input.substr(0, 3);
+    document.getElementById('SHOW_M').value = input.substr(3, 2);
+    document.getElementById('SHOW_D').value = input.substr(5, 2);
     /*************************************************************************************** */
     // 每月日數陣列
     var monthDays = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
@@ -87,68 +56,101 @@ function do_createDaily(input, input_Y, input_M, input_D) {
     var total = monthDays[CreateMonth] + CreateDay;
     var totalCells = total + (total % 7 ? 7 - total % 7 : 0);
     var String_For_Daily_Row = "";
-    String_For_Daily_Row += "<li class='parent'><div class='child_7'>日</div><div class='child_7'>一</div><div class='child_7'>二</div><div class='child_7'>三</div><div class='child_7'>四</div><div class='child_7'>五</div><div class='child_7'>六</div></li>";
+    String_For_Daily_Row += "<div style='padding:2px;'><div style='Display:inline-block;' class='btn_s_Calendar_header'>日</div><div style='Display:inline-block;' class='btn_s_Calendar_header'>一</div><div style='Display:inline-block;' class='btn_s_Calendar_header'>二</div><div style='Display:inline-block;' class='btn_s_Calendar_header'>三</div><div style='Display:inline-block;' class='btn_s_Calendar_header'>四</div><div style='Display:inline-block;' class='btn_s_Calendar_header'>五</div><div style='Display:inline-block;' class='btn_s_Calendar_header'>六</div></div>";
     for (i = 0; i < totalCells; i++) {
-        if (i % 7 == 0) {
-            String_For_Daily_Row += "<li class='parent'>";
-        }
-        if (i >= CreateDay && i < total) {
-            if (i >= CreateDay) {
-                String_For_Daily_Row += "<div class='child_7' align='center' id=" + ((parseInt(CreateYear) - 1911) < 100 ? "0" + (parseInt(CreateYear) - 1911) : (parseInt(CreateYear) - 1911)).toString() + ((CreateMonth + 1) < 10 ? ("0" + (CreateMonth + 1)) : (CreateMonth + 1)) + (((i - CreateDay) + 1) < 10 ? ("0" + ((i - CreateDay) + 1)) : ((i - CreateDay) + 1)) + ">" + ((i - CreateDay) + 1) + "</div>";
-            }
-        } else {
-            String_For_Daily_Row += "<div class='child_7'></div>";
-        }
+        if (i % 7 == 0) { if (i < 7) { String_For_Daily_Row += "<div style='padding:2px;'>"; } else { String_For_Daily_Row += "</div><div style='padding:2px;'>"; } }
+        if (i >= CreateDay && i < total) { if (i >= CreateDay) { String_For_Daily_Row += "<div style='Display:inline-block;' class='btn_s_Calendar' id=" + ((parseInt(CreateYear) - 1911) < 100 ? "0" + (parseInt(CreateYear) - 1911) : (parseInt(CreateYear) - 1911)).toString() + ((CreateMonth + 1) < 10 ? ("0" + (CreateMonth + 1)) : (CreateMonth + 1)) + (((i - CreateDay) + 1) < 10 ? ("0" + ((i - CreateDay) + 1)) : ((i - CreateDay) + 1)) + " name='calendar_item'>" + ((i - CreateDay) + 1) + "</div>"; } } else { String_For_Daily_Row += "<div style='Display:inline-block;' class='btn_s_Calendar_header'>&nbsp;&nbsp;</div>"; }
     }
-    String_For_Daily_Row += "</li>";
+    String_For_Daily_Row += "</div>";
     document.getElementById('daily_Row').innerHTML = String_For_Daily_Row;
-    $('#daily_Row li div').click(function () {
+    try {
+        if (now_Date == ans_id) {
+            document.getElementById(now_Date).className = "btn_s_Calendar_NowDay";
+        } else {
+            document.getElementById(ans_id).className = "btn_s_Calendar_check";
+            try {
+                document.getElementById(now_Date).className = "btn_s_Calendar_NowDay";
+            } catch (e) {
+            }
+        }
+    } catch (e) {
+    }
+    $('#daily_Row div div').click(function () {
         var a = this.id.toString().length;
         if (this.id.toString().length == 7) {
-            document.getElementById(ans_id).value = this.id.toString();
+            document.getElementById('SHOW_Y').value = this.id.substr(0, 3);
+            document.getElementById('SHOW_M').value = this.id.substr(3, 2);
+            document.getElementById('SHOW_D').value = this.id.substr(5, 2);
         }
-        closeCalendar(ans_id);
-    });
-    $('#OLD_Y').click(function () {
-        var old_key = document.getElementById("mySide_key").value;
-        var new_key = "";
-        if (parseInt(old_key.substr(0, 3)) > 10) {
-            document.getElementById("mySide_key").value = ((parseInt(old_key.substr(0, 3)) - 1) < 100 ? "0" + (parseInt(old_key.substr(0, 3)) - 1) : (parseInt(old_key.substr(0, 3)) - 1)).toString() + old_key.substr(3, 2) + old_key.substr(5, 2);
-        } else {
-        }
-        show_calendar(ans_id);
-    });
-    $('#OLD_M').click(function () {
-        var old_key = document.getElementById("mySide_key").value;
-        if (parseInt(old_key.substr(0, 3)) > 10) {
-            if (old_key.substr(3, 2) == "01") {
-                document.getElementById("mySide_key").value = ((parseInt(old_key.substr(0, 3)) - 1) < 100 ? "0" + (parseInt(old_key.substr(0, 3)) - 1) : (parseInt(old_key.substr(0, 3)) - 1)).toString() + "12" + old_key.substr(5, 2);
-            } else {
-                document.getElementById("mySide_key").value = old_key.substr(0, 3) + ((parseInt(old_key.substr(3, 2)) - 1 < 10) ? "0" + (parseInt(old_key.substr(3, 2)) - 1) : (parseInt(old_key.substr(3, 2)) - 1)).toString() + old_key.substr(5, 2);
+        for (i = 0; i < $('div[name^="calendar_item"]').length; i++) {
+            if ($('div[name^="calendar_item"]')[i].id != now_Date) {
+                if ($('div[name^="calendar_item"]')[i].id != this.id) {
+                    document.getElementById($('div[name^="calendar_item"]')[i].id).className = "btn_s_Calendar";
+                } else {
+                    document.getElementById($('div[name^="calendar_item"]')[i].id).className = "btn_s_Calendar_check";
+                }
             }
-        } else {
         }
-        show_calendar();
-    });
-    $('#NEW_Y').click(function () {
-        var old_key = document.getElementById("mySide_key").value;
-        var new_key = "";
-        if (parseInt(old_key.substr(0, 3)) > 10) {
-            document.getElementById("mySide_key").value = ((parseInt(old_key.substr(0, 3)) + 1) < 100 ? "0" + (parseInt(old_key.substr(0, 3)) + 1) : (parseInt(old_key.substr(0, 3)) + 1)).toString() + old_key.substr(3, 2) + old_key.substr(5, 2);
-        } else {
-        }
-        show_calendar(ans_id);
-    });
-    $('#NEW_M').click(function () {
-        var old_key = document.getElementById("mySide_key").value;
-        if (parseInt(old_key.substr(0, 3)) > 10) {
-            if (old_key.substr(3, 2) == "12") {
-                document.getElementById("mySide_key").value = ((parseInt(old_key.substr(0, 3)) + 1) < 100 ? "0" + (parseInt(old_key.substr(0, 3)) + 1) : (parseInt(old_key.substr(0, 3)) + 1)).toString() + "01" + old_key.substr(5, 2);
-            } else {
-                document.getElementById("mySide_key").value = old_key.substr(0, 3) + ((parseInt(old_key.substr(3, 2)) + 1 < 10) ? "0" + (parseInt(old_key.substr(3, 2)) + 1) : (parseInt(old_key.substr(3, 2)) + 1)).toString() + old_key.substr(5, 2);
-            }
-        } else {
-        }
-        show_calendar(ans_id);
     });
 }
+function logic_calendar() {
+    $('#OLD_Y').click(function () {
+        var old_key = document.getElementById("SHOW_Y").value + document.getElementById("SHOW_M").value + document.getElementById("SHOW_D").value;
+        var new_key = "";
+        if (parseInt(old_key.substr(0, 3)) > 10) {
+            new_key = ((parseInt(old_key.substr(0, 3)) - 1) < 100 ? "0" + (parseInt(old_key.substr(0, 3)) - 1) : (parseInt(old_key.substr(0, 3)) - 1)).toString() + old_key.substr(3, 2) + old_key.substr(5, 2);
+        } else {
+        }
+        show_calendar(new_key);
+    });
+    $('#OLD_M').click(function () {
+        var old_key = document.getElementById("SHOW_Y").value + document.getElementById("SHOW_M").value + document.getElementById("SHOW_D").value;
+        var new_key = "";
+        if (parseInt(old_key.substr(0, 3)) > 10) {
+            if (old_key.substr(3, 2) == "01") {
+                new_key = ((parseInt(old_key.substr(0, 3)) - 1) < 100 ? "0" + (parseInt(old_key.substr(0, 3)) - 1) : (parseInt(old_key.substr(0, 3)) - 1)).toString() + "12" + old_key.substr(5, 2);
+            } else {
+                new_key = old_key.substr(0, 3) + ((parseInt(old_key.substr(3, 2)) - 1 < 10) ? "0" + (parseInt(old_key.substr(3, 2)) - 1) : (parseInt(old_key.substr(3, 2)) - 1)).toString() + old_key.substr(5, 2);
+            }
+        } else {
+        }
+        show_calendar(new_key);
+    });
+    $('#NEW_Y').click(function () {
+        var old_key = document.getElementById("SHOW_Y").value + document.getElementById("SHOW_M").value + document.getElementById("SHOW_D").value;
+        var new_key = "";
+        if (parseInt(old_key.substr(0, 3)) > 10) {
+            new_key = ((parseInt(old_key.substr(0, 3)) + 1) < 100 ? "0" + (parseInt(old_key.substr(0, 3)) + 1) : (parseInt(old_key.substr(0, 3)) + 1)).toString() + old_key.substr(3, 2) + old_key.substr(5, 2);
+        } else {
+        }
+        show_calendar(new_key);
+    });
+    $('#NEW_M').click(function () {
+        var old_key = document.getElementById("SHOW_Y").value + document.getElementById("SHOW_M").value + document.getElementById("SHOW_D").value;
+        var new_key = "";
+        if (parseInt(old_key.substr(0, 3)) > 10) {
+            if (old_key.substr(3, 2) == "12") {
+                new_key = ((parseInt(old_key.substr(0, 3)) + 1) < 100 ? "0" + (parseInt(old_key.substr(0, 3)) + 1) : (parseInt(old_key.substr(0, 3)) + 1)).toString() + "01" + old_key.substr(5, 2);
+            } else {
+                new_key = old_key.substr(0, 3) + ((parseInt(old_key.substr(3, 2)) + 1 < 10) ? "0" + (parseInt(old_key.substr(3, 2)) + 1) : (parseInt(old_key.substr(3, 2)) + 1)).toString() + old_key.substr(5, 2);
+            }
+        } else {
+        }
+        show_calendar(new_key);
+    });
+}
+function LOGIC_alert_Message_Calendar() {
+    document.getElementById('btn_s_a').addEventListener('click', function () {
+        document.getElementById('query_date').value = document.getElementById("SHOW_Y").value + document.getElementById("SHOW_M").value + document.getElementById("SHOW_D").value;
+        document.getElementById('model').className = "model_hidden";
+        document.getElementById('ALERT_M').style.top = '-1000%';
+        document.getElementById('ALERT_M').innerHTML = "";
+        CALL_SERVER(document.getElementById('query_date').value, document.getElementById('Frontend_Session_QUERY_PAGE_MODE').value+"|"+document.getElementById('Frontend_Session_QUERY_LIST_SORT').value);
+    });
+    document.getElementById('btn_s_c').addEventListener('click', function () {
+        document.getElementById('model').className = "model_hidden";
+        document.getElementById('ALERT_M').style.top = '-1000%';
+        document.getElementById('ALERT_M').innerHTML = "";
+    });
+}
+//[alert_Message_Calendar]日期的ALERT---------------------------------------------------------------------------------------------------------
