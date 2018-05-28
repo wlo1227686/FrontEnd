@@ -5,132 +5,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/alert_page.css">
+    <script src="js/jquery-3.1.1.js"></script>
+    <title>Alert_Page</title>
 </head>
-<style>
-    .item {
-        padding: 10px;
-        width: 150px;
-        height: 20px;
-        font-size: 20px;
-        border-radius: 4px;
-        border: 1px solid #28a745;
-        color: #28a745;
-        background-color: transparent;
-        border-color: #28a745;
-    }
-
-    .item:hover {
-        color: #fff;
-        background-color: #28a745;
-        border-color: #28a745;
-        opacity: 0.5;
-    }
-
-    #model {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 10;
-        transition: opacity .3s linear;
-        background-color: #000;
-    }
-
-    #alert_font {
-        position: fixed;
-        left: 50%;
-        width: 598px;
-        height: 500px;
-        border-radius: 15px;
-        margin: 0px 0px 0px -300px;
-        z-index: 100;
-        background: #fff;
-        transition: .3s;
-        border: 1px solid rgba(0, 0, 0, .2);
-    }
-
-    .alert_item {
-        padding: 10px;
-        width: 250px;
-        font-size: 20px;
-        border-radius: 4px;
-        border: 1px solid #007bff;
-        color: #007bff;
-        background-color: transparent;
-        border-color: #007bff;
-        z-index: 110;
-    }
-
-    .alert_head {
-        Margin-bottom: 10px;
-        width: 550px;
-        height: 98%;
-        font-size: 20px;
-        line-height: 30px;
-        border-radius: 4px;
-        border: 1px solid #007bff;
-        color: #007bff;
-        background-color: transparent;
-        border-color: #007bff;
-        z-index: 110;
-    }
-
-    .alert_item:hover {
-        color: #fff;
-        background-color: #007bff;
-        border-color: #007bff;
-        opacity: 0.5;
-    }
-
-    .alert_show {
-        top: 15%;
-    }
-
-    .alert_hidden {
-        top: -100%;
-    }
-
-    .model_show {
-        opacity: 0.5;
-        display: block;
-    }
-
-    .model_hidden {
-        opacity: 0;
-        display: none;
-    }
-</style>
 
 <body>
-    <div id="btn1" style="Display:inline-block;" class="item" align="center">SHOW ALERT</div>
-    <!-- alert_windows -->
-    <div id="alert_font" style="top:15%;">
-
-        <div style="padding:10px;" align="center">
-            <div>
-                <div id="btn2" class="alert_item" style="Display:inline-block;">
-                    <div>關閉</div>
-                </div>
-                <div id="btn3" class="alert_item" style="Display:inline-block;">
-                    <div>確定</div>
-                </div>
-            </div>
+    <div>
+        <div id="show_alert_m_1" style="Display:inline-block;" class="item" align="center">M樣式一</div>
+        <div id="show_alert_m_2" style="Display:inline-block;" class="item" align="center">M樣式二</div>
+        <div id="show_alert_m_3" style="Display:inline-block;" class="item" align="center">M樣式三</div>
+        <div id="show_alert_m_4" style="Display:inline-block;" class="item" align="center">M樣式四</div>
+        <div id="show_alert_m_5" style="Display:inline-block;" class="item" align="center">M樣式五</div>
+    </div>
+    <div>
+        <div id="show_alert_q_1" style="Display:inline-block;" class="item" align="center">Q樣式一T</div>
+        <div id="show_alert_q_2" style="Display:inline-block;" class="item" align="center">Q樣式二F</div>
+        <div id="show_alert_q_3" style="Display:inline-block;" class="item" align="center">ANES_1_2_LIST</div>
+        <div style='Display:inline-block;'>親屬關係:</div>
+        <div style='Display:inline-block;Margin:0px 2px 0px 2px;' id='div_16_1_2'>
+            <input type='text' id='A11_16_1_2' style='width:150px;color:blue;border-width: 0px 0px 1px 0px;border-color:black;text-align:center;'
+                readonly>
+        </div>
+        <div style='Display:inline-block;'>員工:</div>
+        <div style='Display:inline-block;Margin:0px 2px 0px 2px;' id='div_5_4_1_1'>
+            <input type='text' id='A12_5_4_1_1' style='width:150px;color:blue;border-width: 0px 0px 1px 0px;border-color:black;text-align:center;'
+                readonly>
+            <input type='text' id='A12_5_4_1_2' style='display:none;'>
         </div>
     </div>
+    <div id='show_font'>
+        <div style='padding:5px;'>
+            <label>
+                <div style='Display:inline-block;Margin:0px 2px -2px 2px;' id='div_1_1_1_1' class='textbox_check_off_div'>
+                    <input type='checkbox' id='A11_1_1_1_1' style='display:none;'>
+                </div>
+                <div style='Display:inline-block;'>選項一</div>
+            </label>
+            <label>
+                <div style='Display:inline-block;Margin:0px 2px -2px 2px;' id='div_1_1_1_2' class='textbox_check_off_div'>
+                    <input type='checkbox' id='A11_1_1_1_2' style='display:none;'>
+                </div>
+                <div style='Display:inline-block;'>選項二</div>
+            </label>
+            <label>
+                <div style='Display:inline-block;Margin:0px 2px -2px 2px;' id='div_1_1_1_3' class='textbox_check_off_div'>
+                    <input type='checkbox' id='A11_1_1_1_3' style='display:none;'>
+                </div>
+                <div style='Display:inline-block;'>選項三</div>
+            </label>
+            <label>
+                <div style='Display:inline-block;Margin:0px 2px -2px 2px;' id='div_1_1_1_4' class='textbox_check_off_div'>
+                    <input type='checkbox' id='A11_1_1_1_4' style='display:none;'>
+                </div>
+                <div style='Display:inline-block;'>選項四</div>
+            </label>
+            <label>
+                <div style='Display:inline-block;Margin:0px 2px -2px 2px;' id='div_1_1_1_5' class='textbox_check_off_div'>
+                    <input type='checkbox' id='A11_1_1_1_5' style='display:none;'>
+                </div>
+                <div style='Display:inline-block;'>選項五</div>
+            </label>
+            <label>
+                <div style='Display:inline-block;Margin:0px 2px -2px 2px;' id='div_1_1_1_6' class='textbox_check_off_div'>
+                    <input type='checkbox' id='A11_1_1_1_6' style='display:none;'>
+                </div>
+                <div style='Display:inline-block;'>選項六</div>
+            </label>
+        </div>
+        <div style='padding:5px;'>
+            <div style='Display:inline-block;'>這是個單選的圈選按鈕:</div>
+            <div style='Display:inline-block;width:16px;height:16px;letter-spacing:-3px;' align='center' name='circle' id='div_1_1'>左</div>
+            <div style='Display:inline-block;'>&nbsp;/&nbsp;</div>
+            <div style='Display:inline-block;width:16px;height:16px;letter-spacing:-3px;' align='center' name='circle' id='div_1_2'>右</div>
+            <input type='checkbox' id='A11_1_1' style='display:none;'>
+            <input type='checkbox' id='A11_1_2' style='display:none;'>
+            <input type='text' id='A11_1' style='display:none;'>
+            <div style='Display:inline-block;'>半球&nbsp;</div>
+        </div>
+        <div>
+            <div style='Display:inline-block;'>這是個二選一的按鈕:</div>
+            <label style='text-align:left;line-height:30px;margin:0px 0px 0px 5px;'>
+                <div style='Display:inline-block;Margin:0px 0px -2px 0px;' id='div_2_1' name='radio' class='textbox_radio_off_div'></div>
+                <div style='Display:inline-block;'>男&nbsp;</div>
+            </label>
+            <label style='text-align:left;line-height:30px;'>
+                <div style='Display:inline-block;Margin:0px 2px -2px 2px;' id='div_2_2' name='radio' class='textbox_radio_off_div'></div>
+                <div style='Display:inline-block;'>女&nbsp;</div>
+            </label>
+            <input type='checkbox' id='A11_2_1' style='display:none;'>
+            <input type='checkbox' id='A11_2_2' style='display:none;'>
+            <input type='text' id='A11_2' name='A11' style='display:none;'>
+        </div>
+        <div>
+            <div style='Display: inline-block;'>多選一[圈選]</div>
+            <div style='Display: inline-block; width: 16px; height: 16px; Margin: 0px 0px 0px 5px;' align='center' name='6_radio' id='div_3_1'>I</div>
+            <div style='Display: inline-block; width: 16px; height: 16px; letter-spacing: -3px; Margin: 0px 0px 0px 5px;' name='6_radio'
+                align='center' id='div_3_2'>II</div>
+            <div style='Display: inline-block; width: 16px; height: 16px; letter-spacing: -3px; Margin: 0px 0px 0px 5px;' name='6_radio'
+                align='center' id='div_3_3'>III</div>
+            <div style='Display: inline-block; width: 16px; height: 16px; letter-spacing: -3px; Margin: 0px 0px 0px 5px;' name='6_radio'
+                align='center' id='div_3_4'>IV</div>
+            <div style='Display: inline-block; width: 16px; height: 16px; letter-spacing: -3px; Margin: 0px 0px 0px 5px;' name='6_radio'
+                align='center' id='div_3_5'>V</div>
+            <div style='Display: inline-block; width: 16px; height: 16px; letter-spacing: -3px; Margin: 0px 0px 0px 5px;' name='6_radio'
+                align='center' id='div_3_6'>VI</div>
+            <input type='text' id='A11_3' name='A11' style='display: none;'>
+        </div>
     </div>
-    <div id="model" class="model_show"></div>
+    <div>
+        <div style='Display: inline-block;'>橢圓形[圈選]</div>
+        <div style='Display:inline-block;width:32px;height:16px;letter-spacing:-3px;' name='oval' align='center' id='div_4_1'>台北</div>
+        <div style='Display:inline-block;'>/</div>
+        <div style='Display:inline-block;width:32px;height:16px;letter-spacing:-3px;' name='oval' align='center' id='div_4_2'>桃園</div>
+        <input type='checkbox' id='A11_4_1' name='A11' style='display:none;'>
+        <input type='checkbox' id='A11_4_2' name='A11' style='display:none;'>
+    </div>
+    <!-- [alert_page]start -->
+    <div id="ALERT_M"></div>
+    <div id="ALERT_Q"></div>
+    <div id="model" class="model_hidden"></div>
+    <!-- [alert_page]end -->
 </body>
-<script>
-    document.getElementById('btn1').addEventListener('click', function () {
-        document.getElementById('model').className = "model_show";
-        document.getElementById('alert_font').style.top = '15%';
-    });
-    document.getElementById('btn2').addEventListener('click', function () {
-        document.getElementById('model').className = "model_hidden";
-        document.getElementById('alert_font').style.top = '-200%';
-    });
-</script>
+<script src="js/alert_page.js"></script>
 
 </html>

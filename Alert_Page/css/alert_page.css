@@ -1,0 +1,291 @@
+/* ---------<alert>--------------------------------------------- */
+#ALERT_M {
+    position: fixed;
+    top: -1000%;
+    left: 50%;
+    width: 598px;
+    height: 500px;
+    border-radius: 15px;
+    margin: 0px 0px 0px -300px;
+    z-index: 100;
+    background: #fdfcf8;
+    transition: .3s;
+    border: 1px solid rgba(0, 0, 0, .2);
+  } 
+#ALERT_Q {
+    position: fixed;
+    top: -1000%;
+    left: 50%;
+    width: 598px;
+    height: 500px;
+    border-radius: 15px;
+    margin: 0px 0px 0px -300px;
+    z-index: 100;
+    background: #fdfcf8;
+    transition: .3s;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+/* ---------<alert>--------------------------------------------- */
+
+/* ---------<model>--------------------------------------------- */
+  #model {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    transition: opacity .3s linear;
+    background-color: #000;
+  }
+  .model_show {
+    opacity: 0.5;
+    display: block;
+  }
+  .model_hidden {
+    opacity: 0;
+    display: none;
+  }
+/* ---------<model>--------------------------------------------- */
+
+/* ---------<item_button>--------------------------------------------- */
+.item {
+    padding: 8px;
+    width: 150px;
+    height: 20px;
+    font-size: 20px;
+    font-family: 微軟正黑體;
+    border-radius: 4px;
+    border: 1px solid #28a745;
+    color: #28a745;
+    background-color: transparent;
+    border-color: #28a745;
+  }
+.item:hover {
+    color: #fff;
+    background-color:#94D3A2;
+    border-color: #94D3A2;
+    opacity: 0.5;
+  }
+.item_lock {
+    padding: 8px;
+    width: 150px;
+    height: 20px;
+    font-size: 20px;
+    font-family: 微軟正黑體;
+    border-radius: 4px;
+    border: 1px solid #28a745;
+    color: #28a745;
+    background-color: transparent;
+    border-color: #28a745;
+    opacity: 0.3;
+  }
+.item_check{
+    padding: 8px;
+    width: 150px;
+    height: 20px;
+    font-size: 20px;
+    font-family: 微軟正黑體;
+    border-radius: 4px;
+    border: 1px solid #28a745;
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+    opacity: 0.5;
+  }
+/* ---------<item_button>--------------------------------------------- */
+
+/* ---------<btn_s_item_button>--------------------------------------------- */
+.btn_s_item {
+    padding: 8px;
+    width: 100px;
+    height: 20px;
+    font-size: 20px;
+    font-family: 微軟正黑體;
+    border-radius: 4px;
+    border: 1px solid #563d7c;
+    color: #563d7c;
+    background-color: transparent;
+    border-color: #563d7c;
+  }
+.btn_s_item:hover {
+    color: #fff;
+    background-color: #563d7c;
+    border-color: #563d7c;
+    opacity: 0.5;
+  }
+.btn_s_item_check {
+    padding: 8px;
+    width: 100px;
+    height: 20px;
+    font-size: 20px;
+    font-family: 微軟正黑體;
+    border-radius: 4px;
+    border: 1px solid #563d7c;
+    color: #fff;
+    background-color: #563d7c;
+    border-color: #563d7c;
+    opacity: 0.6;
+  }
+/* ---------<btn_s_item_button>--------------------------------------------- */
+
+/* ---------<alert-message-loader>--------------------------------------------- */
+
+#alert-message-loader-wrapper {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    }
+
+#alert-message-loader {
+        display: block;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        width: 150px;
+        height: 150px;
+        margin: -75px 0 0 -75px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #3498db;
+
+        -webkit-animation: spin 2s linear infinite;
+        /* Chrome, Opera 15+, Safari 5+ */
+        animation: spin 2s linear infinite;
+        /* Chrome, Firefox 16+, IE 10+, Opera */
+    }
+
+#alert-message-loader:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #e74c3c;
+
+        -webkit-animation: spin 3s linear infinite;
+        /* Chrome, Opera 15+, Safari 5+ */
+        animation: spin 3s linear infinite;
+        /* Chrome, Firefox 16+, IE 10+, Opera */
+}
+
+#alert-message-loader:after {
+        content: "";
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #f9c922;
+
+        -webkit-animation: spin 1.5s linear infinite;
+        /* Chrome, Opera 15+, Safari 5+ */
+        animation: spin 1.5s linear infinite;
+        /* Chrome, Firefox 16+, IE 10+, Opera */
+}
+
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            /* Chrome, Opera 15+, Safari 3.1+ */
+            -ms-transform: rotate(0deg);
+            /* IE 9 */
+            transform: rotate(0deg);
+            /* Firefox 16+, IE 10+, Opera */
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            /* Chrome, Opera 15+, Safari 3.1+ */
+            -ms-transform: rotate(360deg);
+            /* IE 9 */
+            transform: rotate(360deg);
+            /* Firefox 16+, IE 10+, Opera */
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+            /* Chrome, Opera 15+, Safari 3.1+ */
+            -ms-transform: rotate(0deg);
+            /* IE 9 */
+            transform: rotate(0deg);
+            /* Firefox 16+, IE 10+, Opera */
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            /* Chrome, Opera 15+, Safari 3.1+ */
+            -ms-transform: rotate(360deg);
+            /* IE 9 */
+            transform: rotate(360deg);
+            /* Firefox 16+, IE 10+, Opera */
+        }
+    }
+/* ---------<alert-message-loader>--------------------------------------------- */
+
+
+/* ---------<textbox_check_div>--------------------------------------------- */
+.textbox_check_on_div {
+    width: 16px;
+    height: 16px;
+    background-color: blue;
+    -webkit-print-color-adjust: exact;   
+  }
+  
+  .textbox_check_off_div {
+    width: 14px;
+    height: 14px;
+    border: 1px solid black;
+  }
+/* ---------<textbox_check_div>--------------------------------------------- */
+
+/* ---------<textbox_radio_div>--------------------------------------------- */
+  .textbox_radio_on_div{
+    width: 16px;
+    height:16px;
+    background-color: blue;
+    -moz-border-radius: 16px / 16px;
+    -webkit-border-radius: 16px / 16px;
+    border-radius: 16px / 16px;
+    color-adjust: exact;
+    -webkit-print-color-adjust: exact;     
+  }
+  .textbox_radio_off_div{
+    width: 14px;
+    height: 14px;
+    border: 1px solid black;
+    -moz-border-radius: 14px / 14px;
+    -webkit-border-radius: 16px / 14px;
+    border-radius: 14px / 14px;
+    -webkit-print-color-adjust: exact;     
+  }
+/* ---------<textbox_radio_div>--------------------------------------------- */
+
+/* ---------<circle_div>--------------------------------------------- */
+  .circle_on_div {
+    width: 14px;
+    height: 14px;
+    border: 1px solid blue;
+    -moz-border-radius: 56px;
+    -webkit-border-radius: 56px;
+    border-radius: 56px;
+  }
+/* ---------<circle_div>--------------------------------------------- */
+
+/* ---------<oval_div>--------------------------------------------- */
+  .oval_on_div {
+    width: 32px;
+    height: 16px;
+    border: 1px solid blue;
+    -moz-border-radius: 32px / 16px;
+    -webkit-border-radius: 32px / 16px;
+    border-radius: 32px / 16px;
+  }
+/* ---------<oval_div>--------------------------------------------- */
